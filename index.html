@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penerimaan Santri Baru</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 450px;
+            margin: 0 auto;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .logo-section {
+            display: flex;
+            justify-content: center;
+            /* Keep items centered */
+            position: relative;
+            margin-bottom: 80px;
+        }
+
+        .logo-section img {
+            max-width: 45%;
+            /* Ensure they stay side by side */
+            height: auto;
+            /* Maintain aspect ratio */
+            margin: 0 5px;
+            /* Adjust margin for spacing */
+            object-fit: cover;
+            /* Cover the area while maintaining aspect ratio */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .santri-group {
+            border-radius: 10px;
+        }
+
+        .logo-main {
+            position: absolute;
+            top: 80px;
+            /* Move the logo slightly above */
+            left: 49%;
+            transform: translateX(-50%);
+            height: auto;
+            z-index: 1;
+            /* Ensure it's above the other images */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 100px;
+            width: 100px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #008000;
+            /* Green color from the logo */
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+            /* Lighter green */
+        }
+
+        .button {
+            background-color: #008000;
+            /* Dark green */
+            color: #ffffff;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            margin: 10px 0;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #4CAF50;
+            /* Lighter green */
+        }
+
+        .button:active {
+            transform: translateY(2px);
+        }
+
+        .contact {
+            margin-top: 20px;
+            display: grid;
+            /* Gunakan grid untuk layout */
+            grid-template-columns: repeat(2, 1fr);
+            /* 2 kolom dengan lebar yang sama */
+            gap: 20px;
+            /* Jarak antar item, bisa disesuaikan */
+        }
+
+        .contact a {
+            text-decoration: none;
+            color: #008000;
+            display: inline-block;
+            margin: 10px 0;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .contact img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .contact a:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            margin: 0 15px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .social-media img {
+            width: 50px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .social-media a:hover img {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        .collapse-content {
+            background-color: #bee6c0;
+            /* Dark green */
+            color: #000000;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .maps {
+            border: 0;
+            width: 350px;
+            height: 300px;
+        }
+
+        /* Style for the slider container */
+        .slider-container {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Hide all images by default */
+        .slide {
+            display: none;
+        }
+
+        /* Style for each image */
+        .slide img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        /* Navigation buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dots-container {
+            text-align: center;
+            padding: 10px;
+            background: #ddd;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 80%;
+            height: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Modal navigation buttons */
+        .modal-prev,
+        .modal-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            user-select: none;
+        }
+
+        .modal-prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .modal-next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .modal-prev:hover,
+        .modal-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .galleryputri{
+            width:350px;
+        }
+
+        @media (max-width: 478px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                padding: 0px;
+                padding-top: 10px;
+                max-width: 100%;
+            }
+
+            .logo-section {
+                margin-bottom: 90px;
+            }
+
+            .santri-group {
+                max-width: 45%;
+                /* Ensure they stay side by side */
+                height: auto;
+                /* Maintain aspect ratio */
+                margin: 0 5px;
+                /* Adjust margin for spacing */
+            }
+
+            .logo-main {
+                position: absolute;
+                top: 80px;
+                /* Move the logo slightly above */
+                left: 49%;
+                transform: translateX(-50%);
+                height: auto;
+                z-index: 1;
+                /* Ensure it's above the other images */
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                border-radius: 100px;
+                width: 100px;
+            }
+
+            .contact {
+                margin-top: 20px;
+                display: grid;
+                /* Gunakan grid untuk layout */
+                grid-template-columns: repeat(1, 1fr);
+                /* 2 kolom dengan lebar yang sama */
+                gap: 20px;
+                /* Jarak antar item, bisa disesuaikan */
+            }
+
+            .maps {
+                border: 0;
+                width: 250px;
+                height: 250px;
+            }
+
+            .galleryputri{
+            width:250px;
+        }
+
+        }
+
+        @media (max-width: 300px) {
+            body {
+                padding: 10px;
+            }
+
+            .maps {
+                border: 0;
+                width: 200px;
+                height: 200px;
+            }
+
+            .container {
+                padding: 0px;
+                padding-top: 10px;
+                max-width: 100%;
+            }
+
+            .logo-section {
+                margin-bottom: 110px;
+            }
+
+            .santri-group {
+                max-width: 45%;
+                height: auto;
+                margin: 0 5px;
+            }
+
+            .logo-main {
+                position: absolute;
+                top: 80px;
+                /* Move the logo slightly above */
+                left: 48%;
+                transform: translateX(-50%);
+                height: auto;
+                z-index: 1;
+                /* Ensure it's above the other images */
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                border-radius: 100px;
+                width: 100px;
+            }
+            .galleryputri{
+            width:200px;
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Image Section -->
+        <div class="logo-section">
+            <img src="Image/header2.jpg" alt="Santri Group 1" class="santri-group">
+            <!-- Logo placed above the Santri Group 1 and 2 images -->
+            <img src="Image/logo.jpg" alt="Main Logo" class="logo-main">
+            <img src="Image/header1.jpg" alt="Santri Group 2" class="santri-group">
+        </div>
+
+        <!-- Title and Info -->
+        <h1>Penerimaan Santri Baru</h1>
+        <h2>Tahun Pelajaran 2025/2026</h2>
+
+        <!-- Buttons Section -->
+        <hr>
+        <h3>Formulir Pendaftaran</h3>
+        <hr>
+        <a href="https://forms.gle/m83Pf5e8Ls8Kc19h7" target="_blank"><button class="button">SMA IT Al-Asmaul Husna</button></a>
+       <a href="https://forms.gle/eT4TRQQH5xiQzCwW8" target="_blank"> <button class="button">SMP IT Al-Asmaul Husna</button></a>
+        <hr>
+        <h3>Profil Pondok Pesantren</h3>
+        <hr>
+
+        <!-- Dropdown Buttons -->
+        <!-- Dropdown Buttons -->
+        <button class="button" onclick="toggleVisibility('alamatSekolahContent')"
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%; height: 45px;">
+            <span style="flex: 1; text-align: center;">Alamat Sekolah</span>
+            <span id="arrow-alamatSekolahContent"
+                style="background-color: #08080885; width: 25px; height: 25px; display: flex; justify-content: center; align-items: center; border-radius: 100px;">
+                &#9660;
+            </span>
+
+        </button>
+
+        <div id="alamatSekolahContent" class="collapse-content" style="display: none;">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3982.7676371614866!2d115.981624!3d-3.406753!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de8b459e6c82823%3A0x361bf57ecbf68404!2sPONDOK%20PESANTREN%20AL-ASMAUL%20HUSNA!5e0!3m2!1sid!2sus!4v1729434920869!5m2!1sid!2sus"
+                class="maps" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <button class="button" onclick="toggleVisibility('galeriPutraContent')"
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%; height: 45px;">
+            <span style="flex: 1; text-align: center;">Galeri Putra</span> <span id="arrow-galeriPutraContent"
+                style="background-color: #08080885; width: 25px; height: 25px; display: flex; justify-content: center; align-items: center; border-radius: 100px;">&#9660;</span></button>
+        <div id="galeriPutraContent" class="collapse-content" style="display: none;">
+            <div class="slider-container">
+                <!-- Slides -->
+                <div class="slide">
+                    <img src="Image/putra1.jpeg" alt="Image 1" onclick="openModal(1)">
+                </div>
+
+                <div class="slide">
+                    <img src="Image/putra2.jpeg" alt="Image 2" onclick="openModal(2)">
+                </div>
+
+                <div class="slide">
+                    <img src="Image/putra3.jpeg" alt="Image 3" onclick="openModal(3)">
+                </div>
+
+                <div class="slide">
+                    <img src="Image/putra4.jpeg" alt="Image 4" onclick="openModal(4)">
+                </div>
+
+                <!-- Navigation buttons -->
+                <div style="display: flex;">
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+            </div>
+
+            <!-- Dots below the slider -->
+            <div class="dots-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+
+            <!-- Modal to display the clicked image in a larger view with slide -->
+            <div id="myModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
+
+                <!-- Modal navigation buttons -->
+                <a class="modal-prev" onclick="plusModalSlides(-1)">&#10094;</a>
+                <a class="modal-next" onclick="plusModalSlides(1)">&#10095;</a>
+            </div>
+        </div>
+
+        <button class="button" onclick="toggleVisibility('galeriPutriContent')"
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%; height: 45px;">
+            <span style="flex: 1; text-align: center;">Galeri Putri</span> <span id="arrow-galeriPutriContent"
+                style="background-color: #08080885; width: 25px; height: 25px; display: flex; justify-content: center; align-items: center; border-radius: 100px;">&#9660;</span></button>
+        <div id="galeriPutriContent" class="collapse-content" style="display: none;">
+            <div class="slider-container">
+                <img src="Image/putri1.jpeg" alt="Image 2" onclick="openModalPutri()" class="galleryputri">
+                <div id="myModalPutri" class="modal">
+                    <span class="close" onclick="closeModalPutri()">&times;</span>
+                    <img class="modal-content" src="Image/putri1.jpeg" style="display: flex;">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Contact Section -->
+        <h2>Contact Person</h2>
+        <div class="contact">
+            <a href="https://api.whatsapp.com/send?phone=6282340695304&text=Assalmu%27alaikum%20Ustadz%20Fadly."
+                target="_blank" style="display: flex; color: black; text-decoration: none;z-index: 1;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                    style="width: 30px; height: auto; margin-right: 8px;">
+                <div style="display: grid; justify-items: start;">
+                    <!-- Tambahkan justify-items: start untuk meratakan ke kiri -->
+                    <span style="font-weight: bold; text-align: left;">+62 823-4069-5304</span>
+                    <!-- Tambahkan text-align: left jika diperlukan -->
+                    <span style="text-align: left;">Ust. Fadly (Laki-Laki)</span>
+                    <!-- Tambahkan text-align: left jika diperlukan -->
+                </div>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=6285389665948&text=Assalmu%27alaikum%20Bapa%20Fajar."
+                target="_blank" style="display: flex; color: black; text-decoration: none;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                    style="width: 30px; height: auto; margin-right: 8px;">
+                <div style="display: grid; justify-items: start;">
+                    <!-- Tambahkan justify-items: start untuk meratakan ke kiri -->
+                    <span style="font-weight: bold; text-align: left;">+62 853-8966-5948</span>
+                    <!-- Tambahkan text-align: left jika diperlukan -->
+                    <span style="text-align: left;">Pak. Fajar (Laki-Laki)</span>
+                    <!-- Tambahkan text-align: left jika diperlukan -->
+                </div>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=6281350179173&text=Assalmu%27alaikum%20Ibu%20Herlina."
+                target="_blank" style="display: flex; color: black; text-decoration: none;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+                    style="width: 30px; height: auto; margin-right: 8px;">
+                <div style="display: grid; justify-items: start;">
+                    <!-- Tambahkan justify-items: start untuk meratakan ke kiri -->
+                    <span style="font-weight: bold; text-align: left;">+62 813-5017-9173</span>
+                    <!-- Tambahkan text-align: left jika diperlukan -->
+                    <span style="text-align: left;">Ibu. Herlina (Perempuan)</span>
+                    <!-- Tambahkan text-align: left jika diperlukan -->
+                </div>
+            </a>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div class="social-media">
+            <a href="https://www.instagram.com/asmaulhusnaku/?igsh=ZmRiNjN1eGFnZXlk" target="_blank">
+                <img src="Image/Instagram_icon.png" alt="Instagram">
+            </a>
+            <a href="https://web.facebook.com/alasmaulhusnaku?_rdc=1&_rdr" target="_blank">
+                <img src="Image/Facebook_Logo_(2019).png" alt="Facebook">
+            </a>
+            <a href="https://www.youtube.com/channel/UC0u5QgU8Dsgywt9oxmG4WVw" target="_blank">
+                <img src="Image/youtube.webp" alt="YouTube">
+            </a>
+        </div>
+    </div>
+</body>
+<script>
+    function toggleVisibility(contentId) {
+        const content = document.getElementById(contentId);
+        const arrow = document.getElementById('arrow-' + contentId);
+        if (content.style.display === "none") {
+            content.style.display = "block"; // Tampilkan konten
+            arrow.innerHTML = "&#9650;";
+        } else {
+            content.style.display = "none"; // Sembunyikan konten
+            arrow.innerHTML = "&#9660;";
+        }
+    }
+    var slideIndex = 1;
+    var modalSlideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls for main slider
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls for main slider
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("slide");
+        var dots = document.getElementsByClassName("dot");
+
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+
+    // Modal functionality
+    function openModal(n) {
+        modalSlideIndex = n;
+        showModalSlides(modalSlideIndex);
+        document.getElementById("myModal").style.display = "flex";
+    }
+    function openModalPutri(n) {
+        // modalSlideIndex = n;
+        // showModalSlidesPutri(modalSlideIndex);
+        document.getElementById("myModalPutri").style.display = "flex";
+    }
+    
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+    function closeModalPutri() {
+        document.getElementById("myModalPutri").style.display = "none";
+    }
+
+    // Next/previous controls for modal slider
+    function plusModalSlides(n) {
+        showModalSlides(modalSlideIndex += n);
+    }
+
+    function showModalSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("slide");
+        var modalImage = document.getElementById("modalImage");
+
+        if (n > slides.length) {
+            modalSlideIndex = 1
+        }
+        if (n < 1) {
+            modalSlideIndex = slides.length
+        }
+
+        // Set the source of the modal image to the current slide image
+        modalImage.src = slides[modalSlideIndex - 1].getElementsByTagName("img")[0].src;
+    }
+    function showModalSlidesPutri(n) {
+        var i;
+        var slides = document.getElementsByClassName("slide");
+        var modalImage = document.getElementById("modalImagePutri");
+
+        if (n > slides.length) {
+            modalSlideIndex = 1
+        }
+        if (n < 1) {
+            modalSlideIndex = slides.length
+        }
+
+        // Set the source of the modal image to the current slide image
+        modalImage.src = slides[modalSlideIndex - 1].getElementsByTagName("img")[0].src;
+    }
+</script>
+
+</html>
