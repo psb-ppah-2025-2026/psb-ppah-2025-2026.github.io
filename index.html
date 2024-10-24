@@ -181,7 +181,7 @@
             max-width: 800px;
             margin: auto;
         }
-        .slider-container-putri {
+        .slider-container2 {
             position: relative;
             max-width: 800px;
             margin: auto;
@@ -197,24 +197,14 @@
             width: 100%;
             border-radius: 5px;
         }
-        .slider-container-putri {
-            position: relative;
-            max-width: 800px;
-            margin: auto;
-        }
-        .slider-container-putri-putri {
-            position: relative;
-            max-width: 800px;
-            margin: auto;
-        }
 
         /* Hide all images by default */
-        .slide-putri {
+        .slide2 {
             display: none;
         }
 
         /* Style for each image */
-        .slide-putri img {
+        .slide2 img {
             width: 100%;
             border-radius: 5px;
         }
@@ -237,6 +227,26 @@
         }
 
         .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev2,
+        .next2 {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next2 {
             right: 0;
             border-radius: 3px 0 0 3px;
         }
@@ -352,6 +362,117 @@
 
         .modal-prev:hover,
         .modal-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .galleryputri{
+            width:350px;
+        }
+        .prev2:hover,
+        .next2:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .dots-container2 {
+            text-align: center;
+            padding: 10px;
+            background: #ddd;
+        }
+
+        .dot2 {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active,
+        .dot2:hover {
+            background-color: #717171;
+        }
+        .dot2 {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active,
+        .dot2:hover {
+            background-color: #717171;
+        }
+
+        /* Modal styles */
+        .modal2 {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content2 {
+            display: block;
+            margin: auto;
+            max-width: 80%;
+            height: auto;
+        }
+
+        .close2 {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .close2:hover,
+        .close2:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Modal navigation buttons */
+        .modal-prev2,
+        .modal-next2 {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            user-select: none;
+        }
+
+        .modal-prev2 {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .modal-next2 {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .modal-prev2:hover,
+        .modal-next2:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
         .galleryputri{
@@ -529,6 +650,21 @@
                 <div class="slide">
                     <img src="Image/putra4.jpeg" alt="Image 4" onclick="openModal(4)">
                 </div>
+                <div class="slide">
+                    <img src="Image/putra5.jpg" alt="Image 4" onclick="openModal(5)">
+                </div>
+                <div class="slide">
+                    <img src="Image/putra6.jpg" alt="Image 4" onclick="openModal(6)">
+                </div>
+                <div class="slide">
+                    <img src="Image/putra7.jpg" alt="Image 4" onclick="openModal(7)">
+                </div>
+                <div class="slide">
+                    <img src="Image/putra8.jpg" alt="Image 4" onclick="openModal(8)">
+                </div>
+                <div class="slide">
+                    <img src="Image/putra9.jpg" alt="Image 4" onclick="openModal(9)">
+                </div>
 
                 <!-- Navigation buttons -->
                 <div style="display: flex;">
@@ -543,6 +679,11 @@
                 <span class="dot" onclick="currentSlide(2)"></span>
                 <span class="dot" onclick="currentSlide(3)"></span>
                 <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+                <span class="dot" onclick="currentSlide(9)"></span>
             </div>
 
             <!-- Modal to display the clicked image in a larger view with slide -->
@@ -561,33 +702,49 @@
             <span style="flex: 1; text-align: center;">Galeri Putri</span> <span id="arrow-galeriPutriContent"
                 style="background-color: #08080885; width: 25px; height: 25px; display: flex; justify-content: center; align-items: center; border-radius: 100px;">&#9660;</span></button>
         <div id="galeriPutriContent" class="collapse-content" style="display: none;">
-            <div class="slider-container-putri">
+            <div class="slider-container2">
                 <!-- Slides -->
-                <div class="slide-putri">
-                    <img src="Image/putri1.jpeg" alt="Image 1" onclick="openModalPutri(1)">
+                <div class="slide2">
+                    <img src="Image/putri1.jpeg" alt="Image 1" onclick="openModal2(1)">
                 </div>
-
+            
+                <div class="slide2">
+                    <img src="Image/putri2.jpg" alt="Image 2" onclick="openModal2(2)">
+                </div>
+            
+                <div class="slide2">
+                    <img src="Image/putri3.jpg" alt="Image 3" onclick="openModal2(3)">
+                </div>
+            
+                <div class="slide2">
+                    <img src="Image/putri4.jpg" alt="Image 4" onclick="openModal2(4)">
+                </div>
+            
                 <!-- Navigation buttons -->
                 <div style="display: flex;">
-                    <a class="prev" onclick="plusSlidesPutri(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlidesPutri(1)">&#10095;</a>
+                    <a class="prev2" onclick="plusSlides2(-1)">&#10094;</a>
+                    <a class="next2" onclick="plusSlides2(1)">&#10095;</a>
                 </div>
             </div>
-
+            
             <!-- Dots below the slider -->
-            <div class="dots-container-putri">
-                <span class="dot-putri" onclick="currentSlidePutri(1)"></span>
+            <div class="dots-container2">
+                <span class="dot2" onclick="currentSlide2(1)"></span>
+                <span class="dot2" onclick="currentSlide2(2)"></span>
+                <span class="dot2" onclick="currentSlide2(3)"></span>
+                <span class="dot2" onclick="currentSlide2(4)"></span>
             </div>
-
+            
             <!-- Modal to display the clicked image in a larger view with slide -->
-            <div id="myModalPutri" class="modal">
-                <span class="close" onclick="closeModalPutri()">&times;</span>
-                <img class="modal-content" id="modalImagePutri">
-
+            <div id="myModal2" class="modal2">
+                <span class="close2" onclick="closeModal2()">&times;</span>
+                <img class="modal-content2" id="modalImage2">
+            
                 <!-- Modal navigation buttons -->
-                <a class="modal-prev" onclick="plusModalSlidesPutri(-1)">&#10094;</a>
-                <a class="modal-next" onclick="plusModalSlidesPutri(1)">&#10095;</a>
+                <a class="modal-prev2" onclick="plusModalSlides2(-1)">&#10094;</a>
+                <a class="modal-next2" onclick="plusModalSlides2(1)">&#10095;</a>
             </div>
+            
         </div>
 
 
@@ -595,7 +752,7 @@
         <h2>Contact Person</h2>
         <div class="contact">
             <a href="https://api.whatsapp.com/send?phone=6282340695304&text=Assalmu%27alaikum%20Ustadz%20Fadly."
-                target="_blank" style="display: flex; color: black; text-decoration: none;z-index: 1;">
+                target="_blank" style="display: flex; color: black; text-decoration: none;">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
                     style="width: 30px; height: auto; margin-right: 8px;">
                 <div style="display: grid; justify-items: start;">
@@ -661,22 +818,15 @@
     var slideIndex = 1;
     var modalSlideIndex = 1;
     showSlides(slideIndex);
-    showSlidesPutri(slideIndex);
 
     // Next/previous controls for main slider
     function plusSlides(n) {
         showSlides(slideIndex += n);
     }
-    function plusSlidesPutri(n) {
-        showSlidesPutri(slideIndex += n);
-    }
 
     // Thumbnail image controls for main slider
     function currentSlide(n) {
         showSlides(slideIndex = n);
-    }
-    function currentSlidePutri(n) {
-        showSlidesPutri(slideIndex = n);
     }
 
     function showSlides(n) {
@@ -702,29 +852,7 @@
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
     }
-    function showSlidesPutri(n) {
-        var i;
-        var slides = document.getElementsByClassName("slide-putri");
-        var dots = document.getElementsByClassName("dot-putri");
-
-        if (n > slides.length) {
-            slideIndex = 1
-        }
-        if (n < 1) {
-            slideIndex = slides.length
-        }
-
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-    }
+    
 
     // Modal functionality
     function openModal(n) {
@@ -732,26 +860,13 @@
         showModalSlides(modalSlideIndex);
         document.getElementById("myModal").style.display = "flex";
     }
-    function openModalPutri(n) {
-        modalSlideIndex = n;
-        showModalSlidesPutri(modalSlideIndex);
-        document.getElementById("myModalPutri").style.display = "flex";
-    }
     function closeModal() {
         document.getElementById("myModal").style.display = "none";
     }
-    function closeModalPutri() {
-        document.getElementById("myModalPutri").style.display = "none";
-    }
-    function closeModalPutri() {
-        document.getElementById("myModalPutri").style.display = "none";
-    }
 
-    // Next/previous controls for modal slider
-    function plusModalSlidesPutri(n) {
-        showModalSlidesPutri(modalSlideIndex += n);
+    function plusModalSlides(n) {
+        showModalSlides(modalSlideIndex += n);
     }
-
     function showModalSlides(n) {
         var i;
         var slides = document.getElementsByClassName("slide");
@@ -767,20 +882,73 @@
         // Set the source of the modal image to the current slide image
         modalImage.src = slides[modalSlideIndex - 1].getElementsByTagName("img")[0].src;
     }
-    function showModalSlidesPutri(n) {
+    var slideIndex2 = 1;
+    var modalSlideIndex2 = 1;
+    showSlides2(slideIndex2);
+
+    // Next/previous controls for main slider
+    function plusSlides2(n) {
+        showSlides2(slideIndex2 += n);
+    }
+
+    // Thumbnail image controls for main slider
+    function currentSlide2(n) {
+        showSlides2(slideIndex2 = n);
+    }
+
+    function showSlides2(n) {
         var i;
-        var slides = document.getElementsByClassName("slide-putri");
-        var modalImage = document.getElementById("modalImagePutri");
+        var slides = document.getElementsByClassName("slide2");
+        var dots = document.getElementsByClassName("dot2");
 
         if (n > slides.length) {
-            modalSlideIndex = 1
+            slideIndex2 = 1;
         }
         if (n < 1) {
-            modalSlideIndex = slides.length
+            slideIndex2 = slides.length;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex2 - 1].style.display = "block";
+        dots[slideIndex2 - 1].className += " active";
+    }
+
+    // Modal functionality
+    function openModal2(n) {
+        modalSlideIndex2 = n;
+        showModalSlides2(modalSlideIndex2);
+        document.getElementById("myModal2").style.display = "flex";
+    }
+    
+    function closeModal2() {
+        document.getElementById("myModal2").style.display = "none";
+    }
+
+    function plusModalSlides2(n) {
+        showModalSlides2(modalSlideIndex2 += n);
+    }
+
+    function showModalSlides2(n) {
+        var i;
+        var slides = document.getElementsByClassName("slide2"); // Corrected class
+        var modalImage = document.getElementById("modalImage2"); // Corrected ID
+
+        if (n > slides.length) {
+            modalSlideIndex2 = 1;
+        }
+        if (n < 1) {
+            modalSlideIndex2 = slides.length;
         }
 
         // Set the source of the modal image to the current slide image
-        modalImage.src = slides[modalSlideIndex - 1].getElementsByTagName("img")[0].src;
+        modalImage.src = slides[modalSlideIndex2 - 1].getElementsByTagName("img")[0].src;
     }
 </script>
 
